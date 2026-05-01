@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://your-backend-name.onrender.com";
 const TOKEN_KEY = "rag_jwt_token";
 
 const els = {

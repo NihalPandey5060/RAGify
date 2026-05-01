@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const API_BASE = 'http://localhost:8000'
+const API_BASE = 'https://your-backend-name.onrender.com'
 
 export default function AuthPage({ setToken }) {
   const [mode, setMode] = useState('login')

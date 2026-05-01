@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 
 const TOKEN_KEY = 'token'
-const API_BASE = 'http://localhost:8000'
+const API_BASE = 'https://your-backend-name.onrender.com'
 
 export default function MainApp({ token, setToken }) {
   const [user, setUser] = useState(null)
