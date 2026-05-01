@@ -1,4 +1,4 @@
-const API_BASE = "https://your-backend-name.onrender.com";
+const API_BASE = import.meta.env.VITE_API_URL || "https://ragify-uhkv.onrender.com";
 const TOKEN_KEY = "rag_jwt_token";
 
 const els = {

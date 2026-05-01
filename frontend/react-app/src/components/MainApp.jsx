@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 
 const TOKEN_KEY = 'token'
-const API_BASE = 'https://your-backend-name.onrender.com'
+const API_BASE = import.meta.env.VITE_API_URL || 'https://ragify-uhkv.onrender.com'
 
 export default function MainApp({ token, setToken }) {
   const [user, setUser] = useState(null)
