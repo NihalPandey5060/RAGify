@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAG Frontend</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">FastAPI RAG</p>
+        <h1>Document chat</h1>
+        <p class="subtitle">Sign up, upload one file, and ask questions with streaming answers.</p>
+      </div>
+      <div class="status-pill" id="authStatus">Not signed in</div>
+    </header>
+
+    <section id="authPage" class="auth-page">
+      <div class="card auth-card auth-panel">
+        <div class="card-head">
+          <h2>Authentication</h2>
+          <button id="logoutBtn" class="ghost-btn hidden">Log out</button>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active" data-tab="login">Login</button>
+          <button class="tab" data-tab="signup">Sign up</button>
+        </div>
+
+        <form id="loginForm" class="form-pane">
+          <label>
+            Email
+            <input type="email" id="loginEmail" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="loginPassword" required />
+          </label>
+          <button type="submit" class="primary-btn">Login</button>
+        </form>
+
+        <form id="signupForm" class="form-pane hidden">
+          <label>
+            Email
+            <input type="email" id="signupEmail" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="signupPassword" required />
+          </label>
+          <button type="submit" class="primary-btn">Create account</button>
+        </form>
+
+        <div class="message" id="authMessage"></div>
+      </div>
+    </section>
+
+    <main id="mainApp" class="grid hidden">
+      <section class="card main-card">
+        <div class="card-head">
+          <h2>Signed in as</h2>
+          <span class="muted" id="userEmail">-</span>
+        </div>
+
+        <div class="card-head">
+          <h2>Document upload</h2>
+          <span class="muted">Protected route</span>
+        </div>
+
+        <form id="uploadForm" class="upload-box">
+          <input type="file" id="documentFile" accept=".pdf,.txt" required />
+          <button type="submit" class="primary-btn">Upload document</button>
+        </form>
+        <div class="message" id="uploadMessage"></div>
+
+        <hr />
+
+        <div class="card-head">
+          <h2>Chat</h2>
+          <label class="stream-toggle">
+            <input type="checkbox" id="streamToggle" checked />
+            Stream response
+          </label>
+        </div>
+
+        <form id="queryForm" class="query-row">
+          <input type="text" id="queryInput" placeholder="Ask a question about the uploaded document" required />
+          <button type="submit" class="primary-btn">Send</button>
+        </form>
+
+        <div class="chat" id="chatLog"></div>
+      </section>
+    </main>
+  </div>
+
+  <template id="messageTemplate">
+    <div class="bubble">
+      <div class="bubble-meta"></div>
+      <div class="bubble-text"></div>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

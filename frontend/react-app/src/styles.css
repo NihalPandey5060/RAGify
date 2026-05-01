@@ -1,0 +1,22 @@
+body { font-family: Arial, sans-serif; margin: 0; }
+.app-header { display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#0b5; color:#003; }
+.brand { font-weight:700 }
+.user-area { display:flex; gap:8px; align-items:center }
+.logout-btn { background:#fff; border:1px solid rgba(0,0,0,0.1); padding:6px 10px; border-radius:4px; cursor:pointer }
+.auth-page { max-width:380px; margin:48px auto }
+.auth-form label { display:block; margin-bottom:12px }
+.auth-form input { width:100%; padding:8px; margin-top:6px }
+.form-actions { margin-top:8px }
+.error { color:crimson; margin-top:8px }
+.status {
+	margin-top: 8px;
+	padding: 8px 10px;
+	border-radius: 8px;
+	background: #e7f9ef;
+	color: #0a6;
+	border: 1px solid #bfead0;
+}
+.auth-toggle { margin-top: 14px; text-align: center; }
+.auth-toggle { display: flex; justify-content: center; gap: 12px; }
+.link-btn { border: 1px solid #0b5; background: transparent; color: #0b5; cursor: pointer; padding: 6px 12px; border-radius: 999px; }
+.link-btn.active { background: #0b5; color: #fff; }

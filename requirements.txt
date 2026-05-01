@@ -1,0 +1,6 @@
+openai
+pypdf
+chromadb
+faiss-cpu
+python-dotenv
+tiktoken
