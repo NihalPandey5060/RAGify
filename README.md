@@ -1,10 +1,19 @@
-# RAG Project (PDF -> Chroma)
+# RAG Project
 
-A simple production-style RAG pipeline with:
-- PDF ingestion and chunking
-- Local deterministic embeddings
-- Chroma indexing and retrieval
-- Grounded extractive answer generation
+An end-to-end Retrieval-Augmented Generation system for document Q&A. The repository includes both a local CLI pipeline for indexing and retrieval, and a deployed web app with authentication, document upload, and streaming answers.
+
+## Live Demo
+
+Open the deployed app here: [https://ragify-1-fznk.onrender.com](https://ragify-1-fznk.onrender.com)
+
+## What This Project Includes
+
+- PDF and text document ingestion
+- Local deterministic embeddings for reproducible indexing
+- Chroma-backed vector search and retrieval
+- Grounded extractive answer generation with source references
+- FastAPI backend with JWT authentication, document upload, and streaming queries
+- React frontend for signing in, uploading documents, and chatting with the assistant
 
 ## End-to-End Pipeline
 
@@ -15,13 +24,38 @@ A simple production-style RAG pipeline with:
 5. **Retrieve relevant chunks**: A question is embedded with the same embedding function and compared against the stored vectors.
 6. **Generate grounded answer**: `src/generation.py` selects the best retrieved sentences and prints a grounded answer with source and page references.
 
-In short, the flow is: PDF -> chunks -> embeddings -> Chroma index -> retrieval -> grounded answer.
+In short, the flow is: document -> chunks -> embeddings -> Chroma index -> retrieval -> grounded answer.
+
+## Repository Overview
+
+- `src/` contains the local CLI pipeline used for indexing, asking questions, and evaluation.
+- `backend/` contains the FastAPI application with auth, upload, query, cache, and streaming routes.
+- `frontend/` contains the web UI, including a React app that talks to the deployed API.
+- `data/`, `vector_store/`, and `backend/chroma_db/` hold sample content and persisted Chroma databases.
+
+## Pipeline Architecture
+
+The system is split into two connected flows:
+
+1. **Offline indexing flow**: PDF/text document -> chunking -> deterministic embeddings -> Chroma persistence.
+2. **Online question-answering flow**: authenticated user -> document upload or existing index -> retrieval -> grounded answer generation -> streamed response in the web app.
+
+At a high level, the architecture is:
+
+Document ingestion -> chunking -> embeddings -> vector store -> retrieval -> answer synthesis -> UI/API response.
 
 ## Setup
 
 ```powershell
 & ".venv/Scripts/python.exe" -m pip install -r requirements.txt
 ```
+
+## Web App Deployment
+
+The deployed experience uses the React frontend plus the FastAPI backend.
+
+- Frontend: [https://ragify-1-fznk.onrender.com](https://ragify-1-fznk.onrender.com)
+- Backend API: exposed by the deployment and used by the app for authentication, uploads, and queries
 
 ## How Indexing & Embedding Works
 
